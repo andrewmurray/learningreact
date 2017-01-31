@@ -9,7 +9,8 @@
     "react-dom": "^15.4.2"
   },
   "scripts": {
-    "lint": "standard"
+    "lint": "standard",
+    "build": "webpack"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",

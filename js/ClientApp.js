@@ -10,9 +10,10 @@ var MyFirstComponent = React.createClass({
   render () {
     return (
       div(null,
-        MyTitleFact({title: 'Props are great!'}),
-        MyTitleFact({title: 'Use props everywhere!'}),
-        MyTitleFact({title: 'Props are the best!'})
+        MyTitleFact({title: 'this one here', color: 'indigo'}),
+        MyTitleFact({title: 'and another', color: 'peru'}),
+        MyTitleFact({title: 'and some more', color: 'MediumSpringGreen'}),
+        MyTitleFact({title: 'now the last time', color: 'OrangeRed'})         
       )
     )
   }
