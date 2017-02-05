@@ -5,12 +5,14 @@
   "repository": {},
   "license": "MIT",
   "dependencies": {
+    "bootstrap-sass": "^3.3.7",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   },
   "scripts": {
     "lint": "standard",
-    "build": "webpack"
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
