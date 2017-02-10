@@ -1,10 +1,13 @@
-const path = require('path')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const extractSass = new ExtractTextPlugin({
     filename: "[name].[contenthash].css",
     disable: process.env.NODE_ENV === "development"
 });
+
+const cleanWebpackOutput = new CleanWebpackPlugin('public/');
 
 module.exports = {
   context: __dirname,
@@ -30,20 +33,22 @@ module.exports = {
         loader: 'babel-loader'
       },
       {
-        test: /\.(svg|eot|woff|ttf|woff2)$/,
-        loader: "file-loader"
-      },
-      {
         include: path.resolve(__dirname, 'styles'),
         test: /\.scss$/,
         use: extractSass.extract({
           use: ['css-loader','sass-loader'],
           fallback: 'style-loader'
         })
-      }
+      },
+      { test: /\.woff$/,  loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+      { test: /\.woff2$/, loader: "url-loader?limit=10000&mimetype=application/font-woff2" },
+      { test: /\.ttf$/,   loader: "url-loader?limit=10000&mimetype=application/octet-stream" },
+      { test: /\.eot$/,   loader: "file-loader" },
+      { test: /\.svg$/,   loader: "url-loader?limit=10000&mimetype=image/svg+xml" }
     ]
   },
   plugins: [
+    cleanWebpackOutput,
     extractSass
   ]
-}
+};
