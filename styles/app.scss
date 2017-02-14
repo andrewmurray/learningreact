@@ -1,2 +1,13 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+
+.backdrop {
+  background-color: black;
+}
+
+.search-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+}

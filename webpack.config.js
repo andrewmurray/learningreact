@@ -1,13 +1,13 @@
-const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require('path')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+var CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const extractSass = new ExtractTextPlugin({
     filename: "[name].[contenthash].css",
     disable: process.env.NODE_ENV === "development"
-});
+})
 
-const cleanWebpackOutput = new CleanWebpackPlugin('public/');
+const cleanWebpackOutput = new CleanWebpackPlugin('public/')
 
 module.exports = {
   context: __dirname,
@@ -27,6 +27,12 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      },
       {
         include: path.resolve(__dirname, 'js'),
         test: /\.js$/,
@@ -51,4 +57,4 @@ module.exports = {
     cleanWebpackOutput,
     extractSass
   ]
-};
+}

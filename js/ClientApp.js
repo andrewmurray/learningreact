@@ -6,10 +6,10 @@ import '../styles/app.scss'
 const App = React.createClass({
   render () {
     return (
-      <div className="app">
-        <div className="">
-        <h1>svideo</h1>
-          <input type="text" placeholder="search" />
+      <div className='backdrop'>
+        <div className='search-panel'>
+          <h1>svideo</h1>
+          <input type='text' placeholder='search' />
           <a>or browse all</a>
         </div>
       </div>
