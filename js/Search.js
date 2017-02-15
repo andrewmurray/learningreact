@@ -1,7 +1,6 @@
 import React from 'react';
-import { render } from 'react-dom';
 
-export default Landing = React.createClass({
+const Search = React.createClass({
   render () {
     return (
       <div className='search-panel'>
@@ -10,3 +9,5 @@ export default Landing = React.createClass({
     );
   }
 });
+
+export default Search;

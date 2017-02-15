@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import Landing from './Landing';
 import Search from './Search';
@@ -11,8 +12,8 @@ const App = React.createClass({
     return (
       <BrowserRouter>
         <div className='backdrop'>
-          <Match exactly pattern='/' component={Landing} />
-          <Match exactly pattern='/search' component={Search} />
+          <Route exact path='/' component={Landing} />
+          <Route pattern='/search' component={Search} />
         </div>
       </BrowserRouter>
     );

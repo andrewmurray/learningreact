@@ -1,9 +1,8 @@
 import React from 'react';
-import { render } from 'react-dom';
 
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 
-export default Landing = React.createClass({
+const Landing = React.createClass({
   render () {
     return (
       <div className='search-panel'>
@@ -17,3 +16,5 @@ export default Landing = React.createClass({
     );
   }
 });
+
+export default Landing;
