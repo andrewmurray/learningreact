@@ -1,7 +1,7 @@
-import React from 'react'
-import { render } from 'react-dom'
+import React from 'react';
+import { render } from 'react-dom';
 
-import '../styles/app.scss'
+import '../styles/app.scss';
 
 const App = React.createClass({
   render () {
@@ -16,8 +16,8 @@ const App = React.createClass({
           <a>or browse all</a>
         </div>
       </div>
-    )
+    );
   }
-})
+});
 
-render(<App />, document.getElementById('app'))
+render(<App />, document.getElementById('app'));
