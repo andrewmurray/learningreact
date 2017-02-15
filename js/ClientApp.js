@@ -9,7 +9,10 @@ const App = React.createClass({
       <div className='backdrop'>
         <div className='search-panel'>
           <h1>svideo</h1>
-          <input type='text' placeholder='search' />
+          <div className='form-group'>
+            <label htmlFor='exampleInputEmail1'>Search</label>
+            <input type='email' className='form-control' id='exampleInputEmail1' placeholder='Search' />
+          </div>
           <a>or browse all</a>
         </div>
       </div>
