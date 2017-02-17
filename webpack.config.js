@@ -1,13 +1,13 @@
-const path = require('path')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-var CleanWebpackPlugin = require('clean-webpack-plugin')
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const extractSass = new ExtractTextPlugin({
   filename: '[name].[contenthash].css',
   disable: process.env.NODE_ENV === 'development'
-})
+});
 
-const cleanWebpackOutput = new CleanWebpackPlugin('public/')
+const cleanWebpackOutput = new CleanWebpackPlugin('public/');
 
 module.exports = {
   context: __dirname,
@@ -45,6 +45,7 @@ module.exports = {
       {
         include: path.resolve(__dirname, 'styles'),
         test: /\.scss$/,
+//        use: ['style-loader', 'css-loader', 'sass-loader']
         use: extractSass.extract({
           use: ['css-loader', 'sass-loader'],
           fallback: 'style-loader'
@@ -65,4 +66,4 @@ module.exports = {
     cleanWebpackOutput,
     extractSass
   ]
-}
+};
