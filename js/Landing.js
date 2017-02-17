@@ -6,7 +6,7 @@ const Landing = React.createClass({
   render () {
     return (
       <div className='search-panel'>
-        <h1>svideo</h1>
+        <h1>myVids</h1>
         <div className='form-group'>
           <label htmlFor='email'>Search</label>
           <input type='email' className='form-control' id='email' placeholder='Search' />
