@@ -50,6 +50,10 @@ module.exports = {
           fallback: 'style-loader'
         })
       },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
       { test: /\.woff$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff' },
       { test: /\.woff2$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff2' },
       { test: /\.ttf$/, loader: 'url-loader?limit=10000&mimetype=application/octet-stream' },
