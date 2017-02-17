@@ -1,6 +1,9 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
+const merge = require('webpack-merge');
+
+const parts = require('./webpack.parts');
 
 const extractSass = new ExtractTextPlugin({
   filename: '[name].[contenthash].css',
@@ -9,7 +12,7 @@ const extractSass = new ExtractTextPlugin({
 
 const cleanWebpackOutput = new CleanWebpackPlugin('public/');
 
-module.exports = {
+const common = {
   context: __dirname,
   entry: './js/ClientApp.js',
   devtool: 'eval',
@@ -43,15 +46,6 @@ module.exports = {
         loader: 'babel-loader'
       },
       {
-        include: path.resolve(__dirname, 'styles'),
-        test: /\.scss$/,
-//        use: ['style-loader', 'css-loader', 'sass-loader']
-        use: extractSass.extract({
-          use: ['css-loader', 'sass-loader'],
-          fallback: 'style-loader'
-        })
-      },
-      {
         test: /\.json$/,
         loader: 'json-loader'
       },
@@ -63,7 +57,36 @@ module.exports = {
     ]
   },
   plugins: [
-    cleanWebpackOutput,
-    extractSass
+    cleanWebpackOutput
   ]
 };
+
+function development() {
+  return merge([
+    common,
+    parts.loadCss()
+  ])
+}
+
+function production() {
+  return merge([
+    common,
+    parts.extractCss({
+      use: ['css-loader', parts.autoprefix()],
+    }),
+  ]);
+}
+
+module.exports = function(env) {
+  process.env.BABEL_ENV = env;
+
+  if (env === 'production') {
+    return [
+      production()
+    ];
+  }
+
+  return [
+    development()
+  ];
+}
