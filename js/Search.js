@@ -16,10 +16,16 @@ const Search = React.createClass({
   render () {
     return (
       <div className=''>
-        <header>
-          <h1>vidflix</h1>
-          <input onChange={this.handleSearchTermChange} value={this.state.searchTerm} placeholder='Search' type='text' />
-        </header>
+        <nav className='navbar navbar-default navbar-fixed-top'>
+          <div className='container'>
+            <a className='navbar-brand' href='#'>vidflix</a>
+            <form className='navbar-form navbar-right'>
+              <div className='form-group'>
+                <input onChange={this.handleSearchTermChange} value={this.state.searchTerm} className='form-control' placeholder='Search' type='text' />
+              </div>
+            </form>
+          </div>
+        </nav>
         {preload.shows
           .filter(show => `${show.title} ${show.description}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()))
           .map(show => <ShowCard key={show.mdbID} show={show} />)}
