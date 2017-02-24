@@ -13,7 +13,7 @@ const App = React.createClass({
       <Router>
         <div className='backdrop'>
           <Route exact path='/' component={Landing} />
-          <Route pattern='/search' component={Search} />
+          <Route path='/search' component={Search} />
         </div>
       </Router>
     );
